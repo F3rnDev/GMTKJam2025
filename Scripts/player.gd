@@ -1,6 +1,12 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
+const SPEED = 200.0
+
+func _process(delta: float) -> void:
+	if velocity == Vector2.ZERO:
+		$AnimatedSprite2D.play("idle")
+	else:
+		$AnimatedSprite2D.play("walk")
 
 func _physics_process(delta: float) -> void:
 	movePlayer()
