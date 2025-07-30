@@ -10,6 +10,7 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	movePlayer()
+	FlipPlayer()
 
 	move_and_slide()
 
@@ -21,3 +22,10 @@ func movePlayer():
 		velocity = direction * SPEED
 	else:
 		velocity = Vector2().move_toward(direction, SPEED)
+
+func FlipPlayer():
+	var weapon = $Weapon
+	var direction = (weapon.global_position - global_position).normalized()
+	var angle = direction.angle()
+
+	$AnimatedSprite2D.flip_h = abs(angle) > PI / 2
