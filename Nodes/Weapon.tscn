@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://bg3nabscrs5r"]
+
+[ext_resource type="Texture2D" uid="uid://drx1uh3kwwprk" path="res://Assets/Knife-Sheet.png" id="1_rscty"]
+[ext_resource type="Script" uid="uid://ci6sbvswef22t" path="res://Scripts/weapon.gd" id="2_rscty"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rscty"]
+atlas = ExtResource("1_rscty")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qm0ml"]
+atlas = ExtResource("1_rscty")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71i0h"]
+atlas = ExtResource("1_rscty")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyf51"]
+atlas = ExtResource("1_rscty")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qm0ml"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rscty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qm0ml")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71i0h")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyf51")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Weapon" type="AnimatedSprite2D"]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_qm0ml")
+animation = &"attack"
+frame = 2
+frame_progress = 1.0
+script = ExtResource("2_rscty")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
