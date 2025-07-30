@@ -45,9 +45,12 @@ Down={
 [layer_names]
 
 2d_physics/layer_1="Player"
-2d_physics/layer_2="Ground"
+2d_physics/layer_2="World"
 2d_physics/layer_3="Enemies"
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/layer_3=""
+textures/layer_2=""
+textures/layer_1=""
