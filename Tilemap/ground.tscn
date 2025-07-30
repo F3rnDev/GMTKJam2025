@@ -8,7 +8,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAA
 tile_set = ExtResource("1_qvh6g")
 
 [node name="Player" parent="." instance=ExtResource("2_vjcuo")]
-position = Vector2(74, 32)
+position = Vector2(117, 34)
 collision_mask = 2
 
 [node name="Camera2D" type="Camera2D" parent="Player"]

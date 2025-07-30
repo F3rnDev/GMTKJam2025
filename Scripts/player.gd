@@ -7,10 +7,11 @@ func _process(delta: float) -> void:
 		$AnimatedSprite2D.play("idle")
 	else:
 		$AnimatedSprite2D.play("walk")
+	
+	FlipSprite()
 
 func _physics_process(delta: float) -> void:
 	movePlayer()
-	FlipPlayer()
 
 	move_and_slide()
 
@@ -23,9 +24,9 @@ func movePlayer():
 	else:
 		velocity = Vector2().move_toward(direction, SPEED)
 
-func FlipPlayer():
-	var weapon = $Weapon
-	var direction = (weapon.global_position - global_position).normalized()
+func FlipSprite():
+	var mouse = get_global_mouse_position()
+	var direction = (mouse - global_position).normalized()
 	var angle = direction.angle()
 
 	$AnimatedSprite2D.flip_h = abs(angle) > PI / 2
