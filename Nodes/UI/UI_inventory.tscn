@@ -1,0 +1,132 @@
+[gd_scene load_steps=4 format=3 uid="uid://2us0ugd3b5ti"]
+
+[ext_resource type="PackedScene" uid="uid://cuo6pur4a6cpy" path="res://Nodes/UI/Slot.tscn" id="1_orfpj"]
+[ext_resource type="Script" uid="uid://dwusi3fprg87k" path="res://Scripts/UI/ui_inventory.gd" id="1_x5anq"]
+[ext_resource type="PackedScene" uid="uid://d1ne4wcsm0783" path="res://Nodes/UI/SlotEquipament.tscn" id="4_ag8an"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x5anq")
+
+[node name="Inventory" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -90.0
+offset_right = 300.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+
+[node name="Background" type="ColorRect" parent="Inventory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.34902)
+
+[node name="Container" type="HBoxContainer" parent="Inventory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="Slot1" parent="Inventory/Container" instance=ExtResource("1_orfpj")]
+layout_mode = 2
+imageItem = null
+
+[node name="Slot2" parent="Inventory/Container" instance=ExtResource("1_orfpj")]
+layout_mode = 2
+imageItem = null
+
+[node name="Slot3" parent="Inventory/Container" instance=ExtResource("1_orfpj")]
+layout_mode = 2
+imageItem = null
+
+[node name="Slot4" parent="Inventory/Container" instance=ExtResource("1_orfpj")]
+layout_mode = 2
+imageItem = null
+
+[node name="Slot5" parent="Inventory/Container" instance=ExtResource("1_orfpj")]
+layout_mode = 2
+imageItem = null
+
+[node name="Slot6" parent="Inventory/Container" instance=ExtResource("1_orfpj")]
+layout_mode = 2
+imageItem = null
+
+[node name="Slot7" parent="Inventory/Container" instance=ExtResource("1_orfpj")]
+layout_mode = 2
+imageItem = null
+
+[node name="Slot8" parent="Inventory/Container" instance=ExtResource("1_orfpj")]
+layout_mode = 2
+imageItem = null
+
+[node name="Slot9" parent="Inventory/Container" instance=ExtResource("1_orfpj")]
+layout_mode = 2
+imageItem = null
+
+[node name="EquipamentInventory" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 135.0
+offset_top = 107.0
+offset_right = 235.0
+offset_bottom = 487.0
+
+[node name="Background" type="ColorRect" parent="EquipamentInventory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EquipamentContainer" type="VBoxContainer" parent="EquipamentInventory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -7.0
+offset_top = -5.0
+offset_right = -7.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SlotEquipament" parent="EquipamentInventory/EquipamentContainer" instance=ExtResource("4_ag8an")]
+layout_mode = 2
+slotType = 3
+
+[node name="SlotEquipament2" parent="EquipamentInventory/EquipamentContainer" instance=ExtResource("4_ag8an")]
+layout_mode = 2
+slotType = 4
+
+[node name="SlotEquipament3" parent="EquipamentInventory/EquipamentContainer" instance=ExtResource("4_ag8an")]
+layout_mode = 2
+slotType = 5
+
+[node name="SlotEquipament4" parent="EquipamentInventory/EquipamentContainer" instance=ExtResource("4_ag8an")]
+layout_mode = 2
+slotType = 2

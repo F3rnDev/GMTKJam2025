@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cawrspsa5c1j8"]
 
-[ext_resource type="Texture2D" uid="uid://dtiepdm8xfuyt" path="res://icon.svg" id="1_37p78"]
+[ext_resource type="Texture2D" uid="uid://dtiepdm8xfuyt" path="res://icon.svg" id="1_rbjtf"]
 
 [node name="HUD" type="CanvasLayer"]
 
@@ -22,7 +22,7 @@ horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="InfoTrain/AnimationTrain"]
 layout_mode = 2
-texture = ExtResource("1_37p78")
+texture = ExtResource("1_rbjtf")
 
 [node name="InfoWagon" type="VBoxContainer" parent="InfoTrain"]
 layout_mode = 2
