@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var inventory: Control = %UIinventory
+
 const SPEED = 200.0
 
 var health = 10.0
@@ -18,6 +20,7 @@ func _ready() -> void:
 	$ProgressBar.value = 0.0
 
 func _process(delta: float) -> void:
+	Inventory()
 	if velocity == Vector2.ZERO:
 		$AnimatedSprite2D.play("idle")
 	else:
@@ -95,3 +98,9 @@ func die():
 
 func _on_stun_timeout() -> void:
 	stunned = false
+
+func Inventory():
+	if Input.is_action_just_pressed("Inventory") and inventory.visible == true:
+		inventory.visible = false
+	elif Input.is_action_just_pressed("Inventory"):
+		inventory.visible = true

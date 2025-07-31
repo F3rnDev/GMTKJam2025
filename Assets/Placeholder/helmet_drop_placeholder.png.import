@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://defp17bcerihy"
-path="res://.godot/imported/character_green_idle.png-a342f7a9142e098d20aa16e303f8f2d6.ctex"
+uid="uid://sb60dk0nge7x"
+path="res://.godot/imported/helmet_drop_placeholder.png-7fce656155e91b7d59c51e5c35f94448.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/character_green_idle.png"
-dest_files=["res://.godot/imported/character_green_idle.png-a342f7a9142e098d20aa16e303f8f2d6.ctex"]
+source_file="res://Assets/Placeholder/helmet_drop_placeholder.png"
+dest_files=["res://.godot/imported/helmet_drop_placeholder.png-7fce656155e91b7d59c51e5c35f94448.ctex"]
 
 [params]
 
