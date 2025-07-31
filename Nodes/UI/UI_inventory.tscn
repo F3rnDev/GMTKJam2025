@@ -4,116 +4,52 @@
 [ext_resource type="Script" uid="uid://dwusi3fprg87k" path="res://Scripts/UI/ui_inventory.gd" id="1_x5anq"]
 [ext_resource type="PackedScene" uid="uid://d1ne4wcsm0783" path="res://Nodes/UI/SlotEquipament.tscn" id="4_ag8an"]
 
-[node name="UI" type="Control"]
+[node name="UIinventory" type="Control"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 3
-anchors_preset = 15
+anchors_preset = 11
+anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
+grow_horizontal = 0
 grow_vertical = 2
 script = ExtResource("1_x5anq")
 
-[node name="Inventory" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -300.0
-offset_top = -90.0
-offset_right = 300.0
-offset_bottom = -30.0
-grow_horizontal = 2
-grow_vertical = 0
-mouse_default_cursor_shape = 2
-
-[node name="Background" type="ColorRect" parent="Inventory"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0.34902)
-
-[node name="Container" type="HBoxContainer" parent="Inventory"]
+[node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 5
-
-[node name="Slot1" parent="Inventory/Container" instance=ExtResource("1_orfpj")]
-layout_mode = 2
-imageItem = null
-
-[node name="Slot2" parent="Inventory/Container" instance=ExtResource("1_orfpj")]
-layout_mode = 2
-imageItem = null
-
-[node name="Slot3" parent="Inventory/Container" instance=ExtResource("1_orfpj")]
-layout_mode = 2
-imageItem = null
-
-[node name="Slot4" parent="Inventory/Container" instance=ExtResource("1_orfpj")]
-layout_mode = 2
-imageItem = null
-
-[node name="Slot5" parent="Inventory/Container" instance=ExtResource("1_orfpj")]
-layout_mode = 2
-imageItem = null
-
-[node name="Slot6" parent="Inventory/Container" instance=ExtResource("1_orfpj")]
-layout_mode = 2
-imageItem = null
-
-[node name="Slot7" parent="Inventory/Container" instance=ExtResource("1_orfpj")]
-layout_mode = 2
-imageItem = null
-
-[node name="Slot8" parent="Inventory/Container" instance=ExtResource("1_orfpj")]
-layout_mode = 2
-imageItem = null
-
-[node name="Slot9" parent="Inventory/Container" instance=ExtResource("1_orfpj")]
-layout_mode = 2
-imageItem = null
 
 [node name="EquipamentInventory" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 135.0
-offset_top = 107.0
-offset_right = 235.0
-offset_bottom = 487.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 4.0
+offset_right = -3.0
+offset_bottom = -422.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Background" type="ColorRect" parent="EquipamentInventory"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -12.0
-offset_top = -12.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.678944, 0.678944, 0.678944, 1)
 
 [node name="EquipamentContainer" type="VBoxContainer" parent="EquipamentInventory"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -7.0
-offset_top = -5.0
-offset_right = -7.0
-offset_bottom = -5.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 55.0
+offset_bottom = 216.0
 
 [node name="SlotEquipament" parent="EquipamentInventory/EquipamentContainer" instance=ExtResource("4_ag8an")]
 layout_mode = 2
@@ -130,3 +66,98 @@ slotType = 5
 [node name="SlotEquipament4" parent="EquipamentInventory/EquipamentContainer" instance=ExtResource("4_ag8an")]
 layout_mode = 2
 slotType = 2
+
+[node name="Inventory" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 238.0
+offset_right = -3.0
+offset_bottom = -188.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="Background" type="ColorRect" parent="Inventory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.678431, 0.678431, 0.678431, 1)
+
+[node name="GridContainer" type="GridContainer" parent="Inventory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 5
+
+[node name="Slot1" parent="Inventory/GridContainer" instance=ExtResource("1_orfpj")]
+layout_mode = 2
+
+[node name="Slot2" parent="Inventory/GridContainer" instance=ExtResource("1_orfpj")]
+layout_mode = 2
+
+[node name="Slot3" parent="Inventory/GridContainer" instance=ExtResource("1_orfpj")]
+layout_mode = 2
+
+[node name="Slot4" parent="Inventory/GridContainer" instance=ExtResource("1_orfpj")]
+layout_mode = 2
+
+[node name="Slot5" parent="Inventory/GridContainer" instance=ExtResource("1_orfpj")]
+layout_mode = 2
+
+[node name="Slot6" parent="Inventory/GridContainer" instance=ExtResource("1_orfpj")]
+layout_mode = 2
+
+[node name="Slot7" parent="Inventory/GridContainer" instance=ExtResource("1_orfpj")]
+layout_mode = 2
+
+[node name="Slot8" parent="Inventory/GridContainer" instance=ExtResource("1_orfpj")]
+layout_mode = 2
+
+[node name="Slot9" parent="Inventory/GridContainer" instance=ExtResource("1_orfpj")]
+layout_mode = 2
+
+[node name="Slot10" parent="Inventory/GridContainer" instance=ExtResource("1_orfpj")]
+layout_mode = 2
+
+[node name="Slot11" parent="Inventory/GridContainer" instance=ExtResource("1_orfpj")]
+layout_mode = 2
+
+[node name="Slot12" parent="Inventory/GridContainer" instance=ExtResource("1_orfpj")]
+layout_mode = 2
+
+[node name="Slot13" parent="Inventory/GridContainer" instance=ExtResource("1_orfpj")]
+layout_mode = 2
+
+[node name="Slot14" parent="Inventory/GridContainer" instance=ExtResource("1_orfpj")]
+layout_mode = 2
+
+[node name="Slot15" parent="Inventory/GridContainer" instance=ExtResource("1_orfpj")]
+layout_mode = 2
+
+[node name="Slot16" parent="Inventory/GridContainer" instance=ExtResource("1_orfpj")]
+layout_mode = 2
+
+[node name="Slot17" parent="Inventory/GridContainer" instance=ExtResource("1_orfpj")]
+layout_mode = 2
+
+[node name="Slot18" parent="Inventory/GridContainer" instance=ExtResource("1_orfpj")]
+layout_mode = 2
+
+[node name="Slot19" parent="Inventory/GridContainer" instance=ExtResource("1_orfpj")]
+layout_mode = 2
+
+[node name="Slot20" parent="Inventory/GridContainer" instance=ExtResource("1_orfpj")]
+layout_mode = 2

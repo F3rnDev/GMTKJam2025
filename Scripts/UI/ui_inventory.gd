@@ -1,6 +1,6 @@
 extends Control
 
-@onready var container: HBoxContainer = $Inventory/Container
+@onready var container: GridContainer = $Inventory/GridContainer
 
 func add_new_item(data: Dictionary) ->void:
 	for slot in container.get_children():

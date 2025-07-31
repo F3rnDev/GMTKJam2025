@@ -14,5 +14,5 @@ func _add_item_inventory(body) -> void:
 		"amount": amount,
 		"slotType": type,
 	}
-	%UI.add_new_item(data)
+	%UIinventory.add_new_item(data)
 	queue_free()

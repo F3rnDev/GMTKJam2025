@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bd48qvijdweu7"]
+
+[ext_resource type="Script" uid="uid://b6pmicb8r6j4v" path="res://Scripts/UI/item.gd" id="1_qrar4"]
+[ext_resource type="Texture2D" uid="uid://defp17bcerihy" path="res://Assets/character_green_idle.png" id="2_l6i04"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pn3k4"]
+radius = 9.0
+
+[node name="Helmet" type="Area2D"]
+script = ExtResource("1_qrar4")
+imageItem = ExtResource("2_l6i04")
+amount = 1
+type = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_l6i04")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_pn3k4")
