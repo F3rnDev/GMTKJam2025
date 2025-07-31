@@ -1,7 +1,6 @@
 extends AnimatedSprite2D
 
 @export var orbit_distance: float = 30.0 # Distância do player
-@export var min_aim_distance: float = 30.0 # Distância mínima para mirar
 
 var attacking = false
 @export var arc_angle: float = PI  # 90 graus de arco
@@ -40,7 +39,7 @@ func setPosition():
 	var offset = mouse_global - player_global
 	var distance = offset.length()
 	
-	if distance > min_aim_distance:
+	if distance > orbit_distance:
 		look_at(mouse_global)
 	else:
 		look_at(player_global + direction * 1000)

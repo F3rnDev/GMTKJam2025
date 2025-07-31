@@ -1,7 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://muc3rxkpal37"]
+[gd_scene load_steps=26 format=3 uid="uid://muc3rxkpal37"]
 
 [ext_resource type="Script" uid="uid://d2mntqv5vosja" path="res://Scripts/enemy.gd" id="1_u8k0i"]
+[ext_resource type="Shader" uid="uid://bxuy6rn3oshk3" path="res://Shader/whiteSprite.gdshader" id="2_05j8i"]
 [ext_resource type="Texture2D" uid="uid://bwbde4g83w3kw" path="res://Assets/EnemyProj-Sheet_01.png" id="2_rxcki"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u0gek"]
+shader = ExtResource("2_05j8i")
+shader_parameter/sourceColor = Color(1, 1, 1, 1)
+shader_parameter/hint = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u0gek"]
 atlas = ExtResource("2_rxcki")
@@ -106,6 +112,9 @@ size = Vector2(20, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rxcki"]
 size = Vector2(16.5, 14.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u0gek"]
+size = Vector2(20, 32)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rxcki"]
 bg_color = Color(0, 0, 0, 1)
 border_width_left = 1
@@ -122,16 +131,54 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
 
+[sub_resource type="Animation" id="Animation_05j8i"]
+resource_name = "hit"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/hint")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1e-05, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_u0gek"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/hint")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u0gek"]
+_data = {
+&"RESET": SubResource("Animation_u0gek"),
+&"hit": SubResource("Animation_05j8i")
+}
+
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_u8k0i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_u0gek")
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_r5dea")
 animation = &"walk"
-frame_progress = 0.0729926
+frame_progress = 0.418295
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 9)
@@ -144,6 +191,14 @@ collision_layer = 4
 position = Vector2(1.75, 4.75)
 shape = SubResource("RectangleShape2D_rxcki")
 debug_color = Color(0.976193, 0, 0.413714, 0.42)
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_u0gek")
+debug_color = Color(0.825148, 0.398168, 0, 0.42)
 
 [node name="Stun" type="Timer" parent="."]
 wait_time = 0.5
@@ -164,4 +219,10 @@ show_percentage = false
 [node name="DamageLocation" type="Marker2D" parent="."]
 position = Vector2(0, -24)
 
+[node name="HitEffect" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_u0gek")
+}
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="Stun" to="." method="_on_stun_timeout"]

@@ -1,8 +1,14 @@
-[gd_scene load_steps=20 format=3 uid="uid://hdjj4ity3yxy"]
+[gd_scene load_steps=26 format=3 uid="uid://hdjj4ity3yxy"]
 
 [ext_resource type="Script" uid="uid://ba8scfklwy8l0" path="res://Scripts/player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://6kh65r06c3s8" path="res://Assets/PlayerProj-Sheet.png" id="2_onrkg"]
+[ext_resource type="Shader" uid="uid://bxuy6rn3oshk3" path="res://Shader/whiteSprite.gdshader" id="2_sfp35"]
 [ext_resource type="PackedScene" uid="uid://bg3nabscrs5r" path="res://Nodes/Weapon.tscn" id="3_pie2b"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sfp35"]
+shader = ExtResource("2_sfp35")
+shader_parameter/sourceColor = Color(1, 1, 1, 1)
+shader_parameter/hint = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i3pqv"]
 atlas = ExtResource("2_onrkg")
@@ -120,12 +126,52 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(1, 1, 1, 1)
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pie2b"]
+size = Vector2(12, 12)
+
+[sub_resource type="Animation" id="Animation_hv3sw"]
+resource_name = "hit"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/hint")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1e-05, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_sfp35"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/hint")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r4ynj"]
+_data = {
+&"RESET": SubResource("Animation_sfp35"),
+&"hit": SubResource("Animation_hv3sw")
+}
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_mask = 2
 script = ExtResource("1_onrkg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-4.76837e-07, -1.66893e-06)
+material = SubResource("ShaderMaterial_sfp35")
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_onrkg")
 animation = &"walk"
@@ -147,3 +193,24 @@ theme_override_styles/background = SubResource("StyleBoxFlat_pie2b")
 theme_override_styles/fill = SubResource("StyleBoxFlat_sfp35")
 value = 0.07
 show_percentage = false
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(1, 2)
+shape = SubResource("RectangleShape2D_pie2b")
+
+[node name="Stun" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="HitEffect" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_r4ynj")
+}
+
+[node name="DamageLocation" type="Marker2D" parent="."]
+position = Vector2(0, -27)
+
+[connection signal="timeout" from="Stun" to="." method="_on_stun_timeout"]
