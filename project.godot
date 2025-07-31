@@ -15,6 +15,11 @@ run/main_scene="uid://c6te517pylj46"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/stretch/mode="viewport"
+mouse_cursor/custom_image="uid://tpenqrtoak6u"
+
 [input]
 
 Right={
