@@ -2,6 +2,10 @@ extends CharacterBody2D
 
 const SPEED = 200.0
 
+func _ready() -> void:
+	$ProgressBar.max_value = $Weapon/WeaponCoolDown.wait_time
+	$ProgressBar.value = 0.0
+
 func _process(delta: float) -> void:
 	if velocity == Vector2.ZERO:
 		$AnimatedSprite2D.play("idle")
@@ -9,6 +13,12 @@ func _process(delta: float) -> void:
 		$AnimatedSprite2D.play("walk")
 	
 	FlipSprite()
+	
+	if !$Weapon/WeaponCoolDown.is_stopped():
+		$ProgressBar.visible = true
+		$ProgressBar.value = $Weapon/WeaponCoolDown.wait_time - $Weapon/WeaponCoolDown.time_left
+	else:
+		$ProgressBar.visible = false
 
 func _physics_process(delta: float) -> void:
 	movePlayer()

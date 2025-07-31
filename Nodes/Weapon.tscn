@@ -16,7 +16,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qm0ml"]
-size = Vector2(13.3333, 5.33333)
+size = Vector2(16.6667, 5.33333)
 
 [node name="Weapon" type="AnimatedSprite2D"]
 scale = Vector2(1.5, 1.5)
@@ -31,9 +31,14 @@ frame = 0
 frame_progress = 0.0
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(6, 0.666667)
+position = Vector2(-1, 0.666667)
 shape = SubResource("RectangleShape2D_qm0ml")
 
+[node name="WeaponCoolDown" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -12,16 +12,21 @@ var arc_start_angle = 0.0
 var arc_end_angle = 0.0
 @export var attack_duration: float = 0.15
 
+var baseDamage = 1.0
+var critChance = 5.0
+var attackSpeed = 1.0
+
 func _ready() -> void:
 	play("idle")
+	$WeaponCoolDown.wait_time = attackSpeed
 
 func _process(delta: float) -> void:
-	if !attacking:
+	if !attacking and $WeaponCoolDown.is_stopped():
 		setPosition()
 	else:
 		attack_arc_update(delta)
 	
-	if Input.is_action_just_pressed("Attack"):
+	if Input.is_action_just_pressed("Attack") and $WeaponCoolDown.is_stopped():
 		Attack()
 
 func setPosition():
@@ -44,9 +49,8 @@ func setPosition():
 	flip_v = abs(angle) > PI / 2
 
 func Attack():
-	#$Strike.visible = true
-	#$Strike.play("idle")
 	attacking = true
+	$WeaponCoolDown.start()
 	arc_timer = 0.0
 	arc_total_time = attack_duration
 
@@ -58,6 +62,7 @@ func Attack():
 
 func _on_strike_animation_finished() -> void:
 	attacking = false
+	$Area2D.set_deferred("disable", true)
 
 func attack_arc_update(delta: float):
 	arc_timer += delta
@@ -84,5 +89,12 @@ func attack_arc_update(delta: float):
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if attacking:
-		print("AYO FUCK EVE")
+	var obj = area.get_parent()
+	if attacking and obj.is_in_group("Enemy"):
+		var wasCrit = randf() * 100 < critChance
+		
+		var damage = baseDamage
+		if wasCrit:
+			damage *= 2.0
+		
+		obj.receiveDamage(damage)

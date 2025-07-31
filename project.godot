@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GMTK2025"
-run/main_scene="uid://c6te517pylj46"
+run/main_scene="uid://b1ai28hmuvmad"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 window/stretch/mode="viewport"
 mouse_cursor/custom_image="uid://tpenqrtoak6u"
+
+[global_group]
+
+Enemy=""
 
 [input]
 
