@@ -36,39 +36,3 @@ text = "LOOP: 01"
 [node name="Wagon" type="Label" parent="InfoTrain/InfoWagon"]
 layout_mode = 2
 text = "Wagon: 7/12"
-
-[node name="InventoryPlayer" type="VBoxContainer" parent="."]
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 2
-
-[node name="Equipament" type="Control" parent="InventoryPlayer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Inventory" type="Control" parent="InventoryPlayer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="StatusPlayer" type="VBoxContainer" parent="InventoryPlayer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Strength" type="Label" parent="InventoryPlayer/StatusPlayer"]
-layout_mode = 2
-text = "Attack damage: 00"
-
-[node name="Agility" type="Label" parent="InventoryPlayer/StatusPlayer"]
-layout_mode = 2
-text = "Agility: 00"
-
-[node name="AttackSpeed" type="Label" parent="InventoryPlayer/StatusPlayer"]
-layout_mode = 2
-text = "Attack Speed: 00"
-
-[node name="Critic" type="Label" parent="InventoryPlayer/StatusPlayer"]
-layout_mode = 2
-text = "Critic: 0.5%"
