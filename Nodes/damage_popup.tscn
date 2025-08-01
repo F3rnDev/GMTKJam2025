@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cy8gqmnhhrddr"]
 
-[ext_resource type="FontFile" uid="uid://db7yt1vguano6" path="res://Assets/PressStart2P-Regular.ttf" id="1_jc1sx"]
+[ext_resource type="FontFile" uid="uid://db7yt1vguano6" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="1_jc1sx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_l5n3s"]
 font = ExtResource("1_jc1sx")

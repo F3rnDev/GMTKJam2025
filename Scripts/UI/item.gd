@@ -1,6 +1,8 @@
 extends Area2D
 
 @export_file("*.tres") var itemID:String
+@onready var inventory: Control = %UIinventory
+
 @export var imageItem:Texture2D
 @export var amount:int
 @export var type:EquipamentType.SlotType
@@ -19,11 +21,13 @@ func _ready() -> void:
 		pass
 
 func _add_item_inventory(body) -> void:
-	var data = {
-		"imageItem": imageItem,
-		"amount": amount,
-		"slotType": type,
-		"stats": stats
+	if inventory.inventorySpace > 0:
+		var data = {
+			"imageItem": imageItem,
+			"amount": amount,
+			"slotType": type,
+			"stats": stats
 	}
-	%UIinventory.add_new_item(data)
-	queue_free()
+		%UIinventory.add_new_item(data)
+		queue_free()
+		
