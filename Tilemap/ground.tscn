@@ -1,13 +1,15 @@
-[gd_scene load_steps=10 format=4 uid="uid://b1ai28hmuvmad"]
+[gd_scene load_steps=12 format=4 uid="uid://b1ai28hmuvmad"]
 
 [ext_resource type="TileSet" uid="uid://onp3hl8akrl6" path="res://Tilemap/tilemap.tres" id="1_qvh6g"]
 [ext_resource type="PackedScene" uid="uid://hdjj4ity3yxy" path="res://Nodes/player.tscn" id="2_vjcuo"]
 [ext_resource type="PackedScene" uid="uid://2us0ugd3b5ti" path="res://Nodes/UI/UI_inventory.tscn" id="3_28015"]
 [ext_resource type="PackedScene" uid="uid://cawrspsa5c1j8" path="res://Nodes/UI/hud.tscn" id="4_61dth"]
 [ext_resource type="PackedScene" uid="uid://pbhpj66sqsi6" path="res://Nodes/Itens/weapon.tscn" id="4_hipkl"]
+[ext_resource type="PackedScene" uid="uid://cnhbtm0djrqtp" path="res://Nodes/UI/PlayerUI.tscn" id="4_ufjpl"]
 [ext_resource type="PackedScene" uid="uid://bd48qvijdweu7" path="res://Nodes/Itens/helmet.tscn" id="5_28015"]
 [ext_resource type="PackedScene" uid="uid://mh2dbu5u2qjp" path="res://Nodes/Itens/upper.tscn" id="6_mcolp"]
 [ext_resource type="PackedScene" uid="uid://bjj8d4cc7bc24" path="res://Nodes/Itens/lower.tscn" id="9_kyth8"]
+[ext_resource type="Script" uid="uid://btbwtnd7w32pu" path="res://Scripts/game_camera.gd" id="9_ufjpl"]
 [ext_resource type="PackedScene" uid="uid://m616f7sbr6sh" path="res://Nodes/Itens/item.tscn" id="11_ufjpl"]
 
 [node name="Ground" type="TileMapLayer"]
@@ -16,17 +18,11 @@ tile_set = ExtResource("1_qvh6g")
 
 [node name="HUD" parent="." instance=ExtResource("4_61dth")]
 
+[node name="PlayerUi" parent="HUD" instance=ExtResource("4_ufjpl")]
+
 [node name="UIinventory" parent="HUD" instance=ExtResource("3_28015")]
 unique_name_in_owner = true
 visible = false
-
-[node name="Player" parent="." instance=ExtResource("2_vjcuo")]
-position = Vector2(117, 34)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(-6.10352e-05, 3.05176e-05)
-scale = Vector2(10, 10)
-zoom = Vector2(3, 3)
 
 [node name="Helmet" parent="." instance=ExtResource("5_28015")]
 position = Vector2(26, 13)
@@ -36,6 +32,7 @@ position = Vector2(285, 58)
 
 [node name="Weapon" parent="." instance=ExtResource("4_hipkl")]
 position = Vector2(200, 21)
+itemID = "uid://kntjoscv247x"
 
 [node name="Lower" parent="." instance=ExtResource("9_kyth8")]
 position = Vector2(169, 20)
@@ -48,3 +45,16 @@ position = Vector2(254, 24)
 
 [node name="Item3" parent="." instance=ExtResource("11_ufjpl")]
 position = Vector2(244, 57)
+
+[node name="GameCamera" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
+position = Vector2(117, 34)
+scale = Vector2(10, 10)
+zoom = Vector2(3, 3)
+script = ExtResource("9_ufjpl")
+player = NodePath("../Player")
+
+[node name="Player" parent="." node_paths=PackedStringArray("playerUI") instance=ExtResource("2_vjcuo")]
+position = Vector2(117, 34)
+playerUI = NodePath("../HUD/PlayerUi")
+
+[connection signal="droppedEquipment" from="HUD/UIinventory" to="Player" method="_on_u_iinventory_dropped_equipment"]

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ba8scfklwy8l0" path="res://Scripts/player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://6kh65r06c3s8" path="res://Assets/PlayerProj-Sheet.png" id="2_onrkg"]
 [ext_resource type="Shader" uid="uid://bxuy6rn3oshk3" path="res://Shader/whiteSprite.gdshader" id="2_sfp35"]
-[ext_resource type="PackedScene" uid="uid://bg3nabscrs5r" path="res://Nodes/Weapon.tscn" id="3_pie2b"]
+[ext_resource type="PackedScene" uid="uid://bg3nabscrs5r" path="res://Nodes/Weapon/Weapon.tscn" id="3_pie2b"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sfp35"]
 shader = ExtResource("2_sfp35")

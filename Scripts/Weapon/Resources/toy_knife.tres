@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="WeaponEquip" load_steps=3 format=3 uid="uid://kntjoscv247x"]
+
+[ext_resource type="Script" uid="uid://dar5vwt8kmfav" path="res://Scripts/Weapon/WeaponEquip.gd" id="1_u3r2o"]
+[ext_resource type="Texture2D" uid="uid://djqxtpnt2cupa" path="res://Assets/Knife.png" id="2_bkxuw"]
+
+[resource]
+script = ExtResource("1_u3r2o")
+name = "Toy Knife"
+description = "It's pretty much useless"
+sprite = ExtResource("2_bkxuw")
+collisionSize = Vector2(8, 5)
+baseDamage = 1.0
+critChance = 5.0
+attackSpeed = 0.8
+weaponType = "Melee"
+metadata/_custom_type_script = "uid://dar5vwt8kmfav"

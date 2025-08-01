@@ -1,9 +1,11 @@
 extends CharacterBody2D
 
 @onready var inventory: Control = %UIinventory
+@export var playerUI: Control = null
 
 const SPEED = 200.0
 
+var maxHealth = 10.0
 var health = 10.0
 var stunned = false
 
@@ -18,6 +20,15 @@ var knockback_timer = 0.0
 func _ready() -> void:
 	$ProgressBar.max_value = $Weapon/WeaponCoolDown.wait_time
 	$ProgressBar.value = 0.0
+	
+	setHealthUI()
+
+func setHealthUI():
+	if playerUI == null:
+		return
+	
+	playerUI.setCurHealth(health)
+	playerUI.setMaxHealth(maxHealth)
 
 func _process(delta: float) -> void:
 	Inventory()
@@ -89,6 +100,8 @@ func receiveDamage(amount, source_position):
 	tween.tween_property(instantiatePopup, "position", global_position + getRandomDir(), 0.75)
 	
 	get_tree().current_scene.add_child.call_deferred(instantiatePopup)
+	
+	setHealthUI()
 
 func getRandomDir():
 	return Vector2(randf_range(-1, 1), -randf()) * 16
@@ -104,3 +117,25 @@ func Inventory():
 		inventory.visible = false
 	elif Input.is_action_just_pressed("Inventory"):
 		inventory.visible = true
+
+
+func _on_u_iinventory_dropped_equipment(slot: Variant) -> void:
+	if slot != null:
+		if slot.slotType == EquipamentType.SlotType.WEAPON:
+			$Weapon.weaponType = slot.stats
+			$Weapon.setWeaponStats()
+			
+		elif slot.slotType == EquipamentType.SlotType.HELMET:
+			pass
+		
+		elif slot.slotType == EquipamentType.SlotType.UPPER:
+			pass
+		
+		elif slot.slotType == EquipamentType.SlotType.LOWER:
+			pass
+	else:
+		$Weapon.weaponType = null
+		$Weapon.setWeaponStats()
+	
+	$ProgressBar.max_value = $Weapon/WeaponCoolDown.wait_time
+	$ProgressBar.value = 0.0

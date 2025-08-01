@@ -51,20 +51,24 @@ offset_top = 4.0
 offset_right = 55.0
 offset_bottom = 216.0
 
-[node name="SlotEquipament" parent="EquipamentInventory/EquipamentContainer" instance=ExtResource("4_ag8an")]
+[node name="SlotEquipament" parent="EquipamentInventory/EquipamentContainer" node_paths=PackedStringArray("UIRef") instance=ExtResource("4_ag8an")]
 layout_mode = 2
+UIRef = NodePath("../../..")
 slotType = 3
 
-[node name="SlotEquipament2" parent="EquipamentInventory/EquipamentContainer" instance=ExtResource("4_ag8an")]
+[node name="SlotEquipament2" parent="EquipamentInventory/EquipamentContainer" node_paths=PackedStringArray("UIRef") instance=ExtResource("4_ag8an")]
 layout_mode = 2
+UIRef = NodePath("../../..")
 slotType = 4
 
-[node name="SlotEquipament3" parent="EquipamentInventory/EquipamentContainer" instance=ExtResource("4_ag8an")]
+[node name="SlotEquipament3" parent="EquipamentInventory/EquipamentContainer" node_paths=PackedStringArray("UIRef") instance=ExtResource("4_ag8an")]
 layout_mode = 2
+UIRef = NodePath("../../..")
 slotType = 5
 
-[node name="SlotEquipament4" parent="EquipamentInventory/EquipamentContainer" instance=ExtResource("4_ag8an")]
+[node name="SlotEquipament4" parent="EquipamentInventory/EquipamentContainer" node_paths=PackedStringArray("UIRef") instance=ExtResource("4_ag8an")]
 layout_mode = 2
+UIRef = NodePath("../../..")
 slotType = 2
 
 [node name="Inventory" type="Control" parent="."]

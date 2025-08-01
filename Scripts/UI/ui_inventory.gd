@@ -1,9 +1,10 @@
 extends Control
 
 @onready var container: GridContainer = $Inventory/GridContainer
+signal droppedEquipment(slot)
 
 func add_new_item(data: Dictionary) ->void:
-	for slot in container.get_children():
+	for slot in container.get_children():		
 		if slot.imageItem == data.imageItem:
 			slot.amount += data.amount
 			return
@@ -12,4 +13,3 @@ func add_new_item(data: Dictionary) ->void:
 		if slot.imageItem == null:
 			slot.property = data
 			return
-	

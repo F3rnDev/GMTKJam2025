@@ -20,14 +20,15 @@ func _ready() -> void:
 	$ProgressBar.value = health
 
 func _process(delta: float) -> void:
-	var target_position = Vector2.ZERO
+	var target_position = global_position
 	if playerRef:
 		target_position = playerRef.global_position
+	
 	var direction = target_position - global_position
 	if direction.x != 0:
 		$AnimatedSprite2D.flip_h = true if direction.x < 0 else false
 	
-	if stunned:
+	if stunned or target_position == global_position:
 		$AnimatedSprite2D.play("idle")
 		$AnimatedSprite2D.modulate.a = 0.5
 	else:
@@ -42,7 +43,7 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 	
 	if !stunned:
-		var target_position = Vector2.ZERO
+		var target_position = global_position
 		if playerRef:
 			target_position = playerRef.global_position
 		

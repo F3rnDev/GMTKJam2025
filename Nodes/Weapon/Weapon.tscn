@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg3nabscrs5r"]
+
+[ext_resource type="Script" uid="uid://ci6sbvswef22t" path="res://Scripts/Weapon/weapon_global.gd" id="2_olnl1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qm0ml"]
+size = Vector2(0, 0)
+
+[node name="Weapon" type="Sprite2D"]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("2_olnl1")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_qm0ml")
+
+[node name="WeaponCoolDown" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_entered"]

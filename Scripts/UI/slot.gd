@@ -4,6 +4,8 @@ class_name Slot
 
 @export var slotType:EquipamentType.SlotType
 
+var stats:Resource
+
 @export var imageItem:Texture2D:
 	set(value):
 		imageItem = value
@@ -21,6 +23,7 @@ class_name Slot
 	"imageItem": imageItem,
 	"amount": amount,
 	"slotType": slotType,
+	"stats": stats
 }:
 	set(value):
 		property = value
@@ -28,6 +31,7 @@ class_name Slot
 			imageItem = property.imageItem
 			amount = property.amount
 			slotType = property.slotType
+			stats = property.stats
 		else:
 			set_empty_slot()
 

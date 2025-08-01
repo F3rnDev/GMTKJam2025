@@ -1,4 +1,4 @@
-extends AnimatedSprite2D
+extends Sprite2D
 
 @export var orbit_distance: float = 30.0 # Distância do player
 
@@ -11,13 +11,21 @@ var arc_start_angle = 0.0
 var arc_end_angle = 0.0
 @export var attack_duration: float = 0.15
 
-var baseDamage = 1.0
-var critChance = 5.0
-var attackSpeed = 1.0
+#Status
+@export var weaponType:WeaponEquip
 
 func _ready() -> void:
-	play("idle")
-	$WeaponCoolDown.wait_time = attackSpeed
+	setWeaponStats()
+
+func setWeaponStats():
+	if weaponType == null:
+		texture = null
+		$Area2D/CollisionShape2D.shape.extents = Vector2(0.0, 0.0)
+		return
+	
+	$WeaponCoolDown.wait_time = weaponType.attackSpeed
+	texture = weaponType.sprite
+	$Area2D/CollisionShape2D.shape.extents = weaponType.collisionSize
 
 func _process(delta: float) -> void:
 	if !attacking and $WeaponCoolDown.is_stopped():
@@ -25,7 +33,7 @@ func _process(delta: float) -> void:
 	else:
 		attack_arc_update(delta)
 	
-	if Input.is_action_just_pressed("Attack") and $WeaponCoolDown.is_stopped():
+	if Input.is_action_just_pressed("Attack") and $WeaponCoolDown.is_stopped() and weaponType != null:
 		Attack()
 
 func setPosition():
@@ -59,10 +67,6 @@ func Attack():
 	arc_start_angle = to_mouse.angle() - arc_angle / 2
 	arc_end_angle = arc_start_angle + arc_angle
 
-func _on_strike_animation_finished() -> void:
-	attacking = false
-	$Area2D.set_deferred("disable", true)
-
 func attack_arc_update(delta: float):
 	arc_timer += delta
 	var t = clamp(arc_timer / arc_total_time, 0, 1)
@@ -84,15 +88,14 @@ func attack_arc_update(delta: float):
 
 	if t >= 1.0:
 		attacking = false
-		$Strike.visible = false
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	var obj = area.get_parent()
 	if attacking and obj.is_in_group("Enemy"):
-		var wasCrit = randf() * 100 < critChance
+		var wasCrit = randf() * 100 < weaponType.critChance
 		
-		var damage = baseDamage
+		var damage = weaponType.baseDamage
 		if wasCrit:
 			damage *= 2.0
 		
