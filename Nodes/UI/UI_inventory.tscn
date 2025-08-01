@@ -69,20 +69,24 @@ offset_right = 54.0
 offset_bottom = 106.0
 grow_vertical = 2
 
-[node name="SlotEquipament1" parent="VBoxContainer/EquipamentInventory/EquipamentContainer" instance=ExtResource("4_ag8an")]
+[node name="SlotEquipament1" parent="VBoxContainer/EquipamentInventory/EquipamentContainer" node_paths=PackedStringArray("inventory") instance=ExtResource("4_ag8an")]
 layout_mode = 2
+inventory = NodePath("../../../..")
 slotType = 3
 
-[node name="SlotEquipament2" parent="VBoxContainer/EquipamentInventory/EquipamentContainer" instance=ExtResource("4_ag8an")]
+[node name="SlotEquipament2" parent="VBoxContainer/EquipamentInventory/EquipamentContainer" node_paths=PackedStringArray("inventory") instance=ExtResource("4_ag8an")]
 layout_mode = 2
+inventory = NodePath("../../../..")
 slotType = 4
 
-[node name="SlotEquipament3" parent="VBoxContainer/EquipamentInventory/EquipamentContainer" instance=ExtResource("4_ag8an")]
+[node name="SlotEquipament3" parent="VBoxContainer/EquipamentInventory/EquipamentContainer" node_paths=PackedStringArray("inventory") instance=ExtResource("4_ag8an")]
 layout_mode = 2
+inventory = NodePath("../../../..")
 slotType = 5
 
-[node name="SlotEquipament4" parent="VBoxContainer/EquipamentInventory/EquipamentContainer" instance=ExtResource("4_ag8an")]
+[node name="SlotEquipament4" parent="VBoxContainer/EquipamentInventory/EquipamentContainer" node_paths=PackedStringArray("inventory") instance=ExtResource("4_ag8an")]
 layout_mode = 2
+inventory = NodePath("../../../..")
 slotType = 2
 
 [node name="Inventory" type="Control" parent="VBoxContainer"]

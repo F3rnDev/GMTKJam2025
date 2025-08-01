@@ -2,14 +2,12 @@ extends Control
 
 @export var container : GridContainer
 
-func add_new_item(data: Dictionary) ->void:
-	for slot in container.get_children():
-		if slot.imageItem == data.imageItem:
-			slot.amount += data.amount
-			return
-	
+var inventorySpace:int = 20
+
+func add_new_item(data: Dictionary)->void:
 	for slot in container.get_children():
 		if slot.imageItem == null:
 			slot.property = data
+			if inventorySpace > 0:
+				inventorySpace -= 1
 			return
-	

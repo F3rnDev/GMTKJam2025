@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 @onready var inventory: Control = %UIinventory
 
@@ -6,6 +7,8 @@ const SPEED = 200.0
 
 var health = 10.0
 var stunned = false
+
+var inventorySpace:int = 20;
 
 var knockback_velocity = Vector2.ZERO
 @export var knockback_strength: float = 200.0
