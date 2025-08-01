@@ -1,6 +1,8 @@
+@tool
 extends Slot
 
 @export var inventory:Control
+
 
 func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 	return data is Slot and data.slotType == slotType

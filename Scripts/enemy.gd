@@ -19,7 +19,7 @@ func _ready() -> void:
 	$ProgressBar.max_value = health
 	$ProgressBar.value = health
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var target_position = global_position
 	if playerRef:
 		target_position = playerRef.global_position

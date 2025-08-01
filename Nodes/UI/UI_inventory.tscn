@@ -58,36 +58,140 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.678944, 0.678944, 0.678944, 1)
 
-[node name="EquipamentContainer" type="VBoxContainer" parent="VBoxContainer/EquipamentInventory"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 4.0
-offset_top = -106.0
-offset_right = 54.0
-offset_bottom = 106.0
-grow_vertical = 2
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/EquipamentInventory"]
+custom_minimum_size = Vector2(280, 212)
+layout_mode = 0
+offset_left = 3.0
+offset_top = 7.0
+offset_right = 287.0
+offset_bottom = 219.0
 
-[node name="SlotEquipament1" parent="VBoxContainer/EquipamentInventory/EquipamentContainer" node_paths=PackedStringArray("inventory") instance=ExtResource("4_ag8an")]
+[node name="EquipamentContainer" type="VBoxContainer" parent="VBoxContainer/EquipamentInventory/HBoxContainer"]
 layout_mode = 2
-inventory = NodePath("../../../..")
+
+[node name="SlotEquipament1" parent="VBoxContainer/EquipamentInventory/HBoxContainer/EquipamentContainer" node_paths=PackedStringArray("inventory", "content", "uiStats", "uiDescription") instance=ExtResource("4_ag8an")]
+layout_mode = 2
+inventory = NodePath("../../../../..")
 slotType = 3
+content = NodePath("../../../../WeaponStatus/Content")
+uiStats = NodePath("../../../../WeaponStatus/Content/Stats")
+uiDescription = NodePath("../../../../WeaponStatus/Content/Description")
+imageItem = 0
+amount = {
+&"imageItem": null
+}
 
-[node name="SlotEquipament2" parent="VBoxContainer/EquipamentInventory/EquipamentContainer" node_paths=PackedStringArray("inventory") instance=ExtResource("4_ag8an")]
+[node name="SlotEquipament2" parent="VBoxContainer/EquipamentInventory/HBoxContainer/EquipamentContainer" node_paths=PackedStringArray("inventory", "content", "uiStats", "uiDescription") instance=ExtResource("4_ag8an")]
 layout_mode = 2
-inventory = NodePath("../../../..")
+inventory = NodePath("../../../../..")
 slotType = 4
+content = NodePath("../../../../WeaponStatus/Content")
+uiStats = NodePath("../../../../WeaponStatus/Content/Stats")
+uiDescription = NodePath("../../../../WeaponStatus/Content/Description")
+imageItem = 0
+amount = {
+"amount": 0,
+"imageItem": null,
+"slotType": 3,
+"stats": null
+}
 
-[node name="SlotEquipament3" parent="VBoxContainer/EquipamentInventory/EquipamentContainer" node_paths=PackedStringArray("inventory") instance=ExtResource("4_ag8an")]
+[node name="SlotEquipament3" parent="VBoxContainer/EquipamentInventory/HBoxContainer/EquipamentContainer" node_paths=PackedStringArray("inventory", "content", "uiStats", "uiDescription") instance=ExtResource("4_ag8an")]
 layout_mode = 2
-inventory = NodePath("../../../..")
+inventory = NodePath("../../../../..")
 slotType = 5
+content = NodePath("../../../../WeaponStatus/Content")
+uiStats = NodePath("../../../../WeaponStatus/Content/Stats")
+uiDescription = NodePath("../../../../WeaponStatus/Content/Description")
+imageItem = 0
+amount = {
+"amount": 0,
+"imageItem": null,
+"slotType": 3,
+"stats": null
+}
 
-[node name="SlotEquipament4" parent="VBoxContainer/EquipamentInventory/EquipamentContainer" node_paths=PackedStringArray("inventory") instance=ExtResource("4_ag8an")]
+[node name="SlotEquipament4" parent="VBoxContainer/EquipamentInventory/HBoxContainer/EquipamentContainer" node_paths=PackedStringArray("inventory", "content", "uiStats", "uiDescription") instance=ExtResource("4_ag8an")]
 layout_mode = 2
-inventory = NodePath("../../../..")
+inventory = NodePath("../../../../..")
 slotType = 2
+content = NodePath("../../../../WeaponStatus/Content")
+uiStats = NodePath("../../../../WeaponStatus/Content/Stats")
+uiDescription = NodePath("../../../../WeaponStatus/Content/Description")
+imageItem = 0
+amount = {
+"amount": 0,
+"imageItem": null,
+"slotType": 3,
+"stats": null
+}
+
+[node name="PlayerStatus" type="Control" parent="VBoxContainer/EquipamentInventory/HBoxContainer"]
+custom_minimum_size = Vector2(230, 160)
+layout_mode = 2
+
+[node name="Background" type="ColorRect" parent="VBoxContainer/EquipamentInventory/HBoxContainer/PlayerStatus"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.877616, 0.877616, 0.877616, 1)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/EquipamentInventory/HBoxContainer/PlayerStatus"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -110.0
+offset_right = 110.0
+offset_bottom = 145.0
+grow_horizontal = 2
+theme_override_constants/separation = 5
+
+[node name="Title" type="Label" parent="VBoxContainer/EquipamentInventory/HBoxContainer/PlayerStatus/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 10
+text = "Status"
+label_settings = ExtResource("4_x5anq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/EquipamentInventory/HBoxContainer/PlayerStatus/VBoxContainer2"]
+clip_contents = true
+custom_minimum_size = Vector2(220, 120)
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 10
+
+[node name="Strenght" type="Label" parent="VBoxContainer/EquipamentInventory/HBoxContainer/PlayerStatus/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Strenght: 00"
+label_settings = ExtResource("4_yv2tc")
+vertical_alignment = 1
+
+[node name="Attack speed" type="Label" parent="VBoxContainer/EquipamentInventory/HBoxContainer/PlayerStatus/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Attack speed: 00"
+label_settings = ExtResource("4_yv2tc")
+vertical_alignment = 1
+
+[node name="Agility" type="Label" parent="VBoxContainer/EquipamentInventory/HBoxContainer/PlayerStatus/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Agility: 00"
+label_settings = ExtResource("4_yv2tc")
+vertical_alignment = 1
+
+[node name="Crit chance" type="Label" parent="VBoxContainer/EquipamentInventory/HBoxContainer/PlayerStatus/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Crit chance: 5.0%"
+label_settings = ExtResource("4_yv2tc")
+vertical_alignment = 1
 
 [node name="Inventory" type="Control" parent="VBoxContainer"]
 custom_minimum_size = Vector2(290, 225)
@@ -121,71 +225,131 @@ theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 5
 columns = 5
 
-[node name="Slot1" parent="VBoxContainer/Inventory/GridContainer" instance=ExtResource("1_orfpj")]
+[node name="Slot1" parent="VBoxContainer/Inventory/GridContainer" node_paths=PackedStringArray("content", "uiStats", "uiDescription") instance=ExtResource("1_orfpj")]
+layout_mode = 2
+content = NodePath("../../../WeaponStatus/Content")
+uiStats = NodePath("../../../WeaponStatus/Content/Stats")
+uiDescription = NodePath("../../../WeaponStatus/Content/Description")
+
+[node name="Slot2" parent="VBoxContainer/Inventory/GridContainer" node_paths=PackedStringArray("content", "uiStats", "uiDescription") instance=ExtResource("1_orfpj")]
+layout_mode = 2
+content = NodePath("../../../WeaponStatus/Content")
+uiStats = NodePath("../../../WeaponStatus/Content/Stats")
+uiDescription = NodePath("../../../WeaponStatus/Content/Description")
+
+[node name="Slot3" parent="VBoxContainer/Inventory/GridContainer" node_paths=PackedStringArray("content", "uiStats", "uiDescription") instance=ExtResource("1_orfpj")]
+layout_mode = 2
+content = NodePath("../../../WeaponStatus/Content")
+uiStats = NodePath("../../../WeaponStatus/Content/Stats")
+uiDescription = NodePath("../../../WeaponStatus/Content/Description")
+
+[node name="Slot4" parent="VBoxContainer/Inventory/GridContainer" node_paths=PackedStringArray("content", "uiStats", "uiDescription") instance=ExtResource("1_orfpj")]
+layout_mode = 2
+content = NodePath("../../../WeaponStatus/Content")
+uiStats = NodePath("../../../WeaponStatus/Content/Stats")
+uiDescription = NodePath("../../../WeaponStatus/Content/Description")
+
+[node name="Slot5" parent="VBoxContainer/Inventory/GridContainer" node_paths=PackedStringArray("content", "uiStats", "uiDescription") instance=ExtResource("1_orfpj")]
+layout_mode = 2
+content = NodePath("../../../WeaponStatus/Content")
+uiStats = NodePath("../../../WeaponStatus/Content/Stats")
+uiDescription = NodePath("../../../WeaponStatus/Content/Description")
+
+[node name="Slot6" parent="VBoxContainer/Inventory/GridContainer" node_paths=PackedStringArray("content", "uiStats", "uiDescription") instance=ExtResource("1_orfpj")]
+layout_mode = 2
+content = NodePath("../../../WeaponStatus/Content")
+uiStats = NodePath("../../../WeaponStatus/Content/Stats")
+uiDescription = NodePath("../../../WeaponStatus/Content/Description")
+
+[node name="Slot7" parent="VBoxContainer/Inventory/GridContainer" node_paths=PackedStringArray("content", "uiStats", "uiDescription") instance=ExtResource("1_orfpj")]
+layout_mode = 2
+content = NodePath("../../../WeaponStatus/Content")
+uiStats = NodePath("../../../WeaponStatus/Content/Stats")
+uiDescription = NodePath("../../../WeaponStatus/Content/Description")
+
+[node name="Slot8" parent="VBoxContainer/Inventory/GridContainer" node_paths=PackedStringArray("content", "uiStats", "uiDescription") instance=ExtResource("1_orfpj")]
+layout_mode = 2
+content = NodePath("../../../WeaponStatus/Content")
+uiStats = NodePath("../../../WeaponStatus/Content/Stats")
+uiDescription = NodePath("../../../WeaponStatus/Content/Description")
+
+[node name="Slot9" parent="VBoxContainer/Inventory/GridContainer" node_paths=PackedStringArray("content", "uiStats", "uiDescription") instance=ExtResource("1_orfpj")]
+layout_mode = 2
+content = NodePath("../../../WeaponStatus/Content")
+uiStats = NodePath("../../../WeaponStatus/Content/Stats")
+uiDescription = NodePath("../../../WeaponStatus/Content/Description")
+
+[node name="Slot10" parent="VBoxContainer/Inventory/GridContainer" node_paths=PackedStringArray("content", "uiStats", "uiDescription") instance=ExtResource("1_orfpj")]
+layout_mode = 2
+content = NodePath("../../../WeaponStatus/Content")
+uiStats = NodePath("../../../WeaponStatus/Content/Stats")
+uiDescription = NodePath("../../../WeaponStatus/Content/Description")
+
+[node name="Slot11" parent="VBoxContainer/Inventory/GridContainer" node_paths=PackedStringArray("content", "uiStats", "uiDescription") instance=ExtResource("1_orfpj")]
+layout_mode = 2
+content = NodePath("../../../WeaponStatus/Content")
+uiStats = NodePath("../../../WeaponStatus/Content/Stats")
+uiDescription = NodePath("../../../WeaponStatus/Content/Description")
+
+[node name="Slot12" parent="VBoxContainer/Inventory/GridContainer" node_paths=PackedStringArray("content", "uiStats", "uiDescription") instance=ExtResource("1_orfpj")]
+layout_mode = 2
+content = NodePath("../../../WeaponStatus/Content")
+uiStats = NodePath("../../../WeaponStatus/Content/Stats")
+uiDescription = NodePath("../../../WeaponStatus/Content/Description")
+
+[node name="Slot13" parent="VBoxContainer/Inventory/GridContainer" node_paths=PackedStringArray("content", "uiStats", "uiDescription") instance=ExtResource("1_orfpj")]
+layout_mode = 2
+content = NodePath("../../../WeaponStatus/Content")
+uiStats = NodePath("../../../WeaponStatus/Content/Stats")
+uiDescription = NodePath("../../../WeaponStatus/Content/Description")
+
+[node name="Slot14" parent="VBoxContainer/Inventory/GridContainer" node_paths=PackedStringArray("content", "uiStats", "uiDescription") instance=ExtResource("1_orfpj")]
+layout_mode = 2
+content = NodePath("../../../WeaponStatus/Content")
+uiStats = NodePath("../../../WeaponStatus/Content/Stats")
+uiDescription = NodePath("../../../WeaponStatus/Content/Description")
+
+[node name="Slot15" parent="VBoxContainer/Inventory/GridContainer" node_paths=PackedStringArray("content", "uiStats", "uiDescription") instance=ExtResource("1_orfpj")]
+layout_mode = 2
+content = NodePath("../../../WeaponStatus/Content")
+uiStats = NodePath("../../../WeaponStatus/Content/Stats")
+uiDescription = NodePath("../../../WeaponStatus/Content/Description")
+
+[node name="Slot16" parent="VBoxContainer/Inventory/GridContainer" node_paths=PackedStringArray("content", "uiStats", "uiDescription") instance=ExtResource("1_orfpj")]
+layout_mode = 2
+content = NodePath("../../../WeaponStatus/Content")
+uiStats = NodePath("../../../WeaponStatus/Content/Stats")
+uiDescription = NodePath("../../../WeaponStatus/Content/Description")
+
+[node name="Slot17" parent="VBoxContainer/Inventory/GridContainer" node_paths=PackedStringArray("content", "uiStats", "uiDescription") instance=ExtResource("1_orfpj")]
+layout_mode = 2
+content = NodePath("../../../WeaponStatus/Content")
+uiStats = NodePath("../../../WeaponStatus/Content/Stats")
+uiDescription = NodePath("../../../WeaponStatus/Content/Description")
+
+[node name="Slot18" parent="VBoxContainer/Inventory/GridContainer" node_paths=PackedStringArray("content", "uiStats", "uiDescription") instance=ExtResource("1_orfpj")]
+layout_mode = 2
+content = NodePath("../../../WeaponStatus/Content")
+uiStats = NodePath("../../../WeaponStatus/Content/Stats")
+uiDescription = NodePath("../../../WeaponStatus/Content/Description")
+
+[node name="Slot19" parent="VBoxContainer/Inventory/GridContainer" node_paths=PackedStringArray("content", "uiStats", "uiDescription") instance=ExtResource("1_orfpj")]
+layout_mode = 2
+content = NodePath("../../../WeaponStatus/Content")
+uiStats = NodePath("../../../WeaponStatus/Content/Stats")
+uiDescription = NodePath("../../../WeaponStatus/Content/Description")
+
+[node name="Slot20" parent="VBoxContainer/Inventory/GridContainer" node_paths=PackedStringArray("content", "uiStats", "uiDescription") instance=ExtResource("1_orfpj")]
+layout_mode = 2
+content = NodePath("../../../WeaponStatus/Content")
+uiStats = NodePath("../../../WeaponStatus/Content/Stats")
+uiDescription = NodePath("../../../WeaponStatus/Content/Description")
+
+[node name="WeaponStatus" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(290, 155)
 layout_mode = 2
 
-[node name="Slot2" parent="VBoxContainer/Inventory/GridContainer" instance=ExtResource("1_orfpj")]
-layout_mode = 2
-
-[node name="Slot3" parent="VBoxContainer/Inventory/GridContainer" instance=ExtResource("1_orfpj")]
-layout_mode = 2
-
-[node name="Slot4" parent="VBoxContainer/Inventory/GridContainer" instance=ExtResource("1_orfpj")]
-layout_mode = 2
-
-[node name="Slot5" parent="VBoxContainer/Inventory/GridContainer" instance=ExtResource("1_orfpj")]
-layout_mode = 2
-
-[node name="Slot6" parent="VBoxContainer/Inventory/GridContainer" instance=ExtResource("1_orfpj")]
-layout_mode = 2
-
-[node name="Slot7" parent="VBoxContainer/Inventory/GridContainer" instance=ExtResource("1_orfpj")]
-layout_mode = 2
-
-[node name="Slot8" parent="VBoxContainer/Inventory/GridContainer" instance=ExtResource("1_orfpj")]
-layout_mode = 2
-
-[node name="Slot9" parent="VBoxContainer/Inventory/GridContainer" instance=ExtResource("1_orfpj")]
-layout_mode = 2
-
-[node name="Slot10" parent="VBoxContainer/Inventory/GridContainer" instance=ExtResource("1_orfpj")]
-layout_mode = 2
-
-[node name="Slot11" parent="VBoxContainer/Inventory/GridContainer" instance=ExtResource("1_orfpj")]
-layout_mode = 2
-
-[node name="Slot12" parent="VBoxContainer/Inventory/GridContainer" instance=ExtResource("1_orfpj")]
-layout_mode = 2
-
-[node name="Slot13" parent="VBoxContainer/Inventory/GridContainer" instance=ExtResource("1_orfpj")]
-layout_mode = 2
-
-[node name="Slot14" parent="VBoxContainer/Inventory/GridContainer" instance=ExtResource("1_orfpj")]
-layout_mode = 2
-
-[node name="Slot15" parent="VBoxContainer/Inventory/GridContainer" instance=ExtResource("1_orfpj")]
-layout_mode = 2
-
-[node name="Slot16" parent="VBoxContainer/Inventory/GridContainer" instance=ExtResource("1_orfpj")]
-layout_mode = 2
-
-[node name="Slot17" parent="VBoxContainer/Inventory/GridContainer" instance=ExtResource("1_orfpj")]
-layout_mode = 2
-
-[node name="Slot18" parent="VBoxContainer/Inventory/GridContainer" instance=ExtResource("1_orfpj")]
-layout_mode = 2
-
-[node name="Slot19" parent="VBoxContainer/Inventory/GridContainer" instance=ExtResource("1_orfpj")]
-layout_mode = 2
-
-[node name="Slot20" parent="VBoxContainer/Inventory/GridContainer" instance=ExtResource("1_orfpj")]
-layout_mode = 2
-
-[node name="PlayerStatus" type="Control" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 155)
-layout_mode = 2
-
-[node name="Background" type="ColorRect" parent="VBoxContainer/PlayerStatus"]
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/WeaponStatus"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -194,47 +358,21 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.678431, 0.678431, 0.678431, 1)
 
-[node name="Title" type="Label" parent="VBoxContainer/PlayerStatus"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 20.0
-grow_horizontal = 2
-text = "Status"
-label_settings = ExtResource("4_x5anq")
-horizontal_alignment = 1
+[node name="Content" type="HBoxContainer" parent="VBoxContainer/WeaponStatus"]
+custom_minimum_size = Vector2(290, 155)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PlayerStatus"]
-custom_minimum_size = Vector2(280, 120)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -140.0
-offset_top = -120.0
-offset_right = 140.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/separation = 10
-
-[node name="Strenght" type="Label" parent="VBoxContainer/PlayerStatus/VBoxContainer"]
+[node name="Stats" type="RichTextLabel" parent="VBoxContainer/WeaponStatus/Content"]
+clip_contents = false
 layout_mode = 2
-text = "Strenght: 00"
-label_settings = ExtResource("4_yv2tc")
+size_flags_horizontal = 3
+bbcode_enabled = true
+fit_content = true
 
-[node name="Attack speed" type="Label" parent="VBoxContainer/PlayerStatus/VBoxContainer"]
+[node name="Description" type="RichTextLabel" parent="VBoxContainer/WeaponStatus/Content"]
 layout_mode = 2
-text = "Attack speed: 00"
-label_settings = ExtResource("4_yv2tc")
-
-[node name="Agility" type="Label" parent="VBoxContainer/PlayerStatus/VBoxContainer"]
-layout_mode = 2
-text = "Agility: 00"
-label_settings = ExtResource("4_yv2tc")
-
-[node name="Crit chance" type="Label" parent="VBoxContainer/PlayerStatus/VBoxContainer"]
-layout_mode = 2
-text = "Crit chance: 5.0%"
-label_settings = ExtResource("4_yv2tc")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+fit_content = true

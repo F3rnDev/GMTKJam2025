@@ -4,6 +4,10 @@ class_name Slot
 
 @export var slotType:EquipamentType.SlotType
 
+@export var content:HBoxContainer
+@export var uiStats:RichTextLabel
+@export var uiDescription:RichTextLabel
+
 var stats:Resource
 
 @export var imageItem:Texture2D:
@@ -68,4 +72,15 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 func set_empty_slot():
 	imageItem = null
 	amount = 0
-	slotType = 0
+	slotType = EquipamentType.SlotType.ALL
+
+func _on_mouse_entered() -> void:
+	if property.stats != null:
+		content.visible = true
+		uiStats.text = "Name: " + str(stats.name) + "\n" + "Damage: " + str(stats.baseDamage) + "\n" + "Attack speed: " + str(stats.attackSpeed) + "\n" + "Crit chance: " + str(stats.critChance) + "%"
+		uiDescription.text = str(stats.description)
+
+
+func _on_mouse_exited() -> void:
+	content.visible = false
+	

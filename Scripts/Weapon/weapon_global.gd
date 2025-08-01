@@ -40,19 +40,19 @@ func setPosition():
 	var mouse_global = get_global_mouse_position()
 	var player_global = get_parent().global_position
 	
-	var direction = (mouse_global - player_global).normalized()
-	var targetPos = player_global + direction * orbit_distance
+	var moveDirection = (mouse_global - player_global).normalized()
+	var targetPos = player_global + moveDirection * orbit_distance
 	global_position = lerp(global_position, targetPos, attack_duration)
 	
-	var offset = mouse_global - player_global
+	#var offset = mouse_global - player_global
 	var distance = offset.length()
 	
 	if distance > orbit_distance:
 		look_at(mouse_global)
 	else:
-		look_at(player_global + direction * 1000)
+		look_at(player_global + moveDirection * 1000)
 	
-	var angle = direction.angle()
+	var angle = moveDirection.angle()
 	flip_v = abs(angle) > PI / 2
 
 func Attack():

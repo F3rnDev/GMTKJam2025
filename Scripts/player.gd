@@ -33,7 +33,7 @@ func setHealthUI():
 	playerUI.setCurHealth(health)
 	playerUI.setMaxHealth(maxHealth)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	Inventory()
 	if velocity == Vector2.ZERO:
 		$AnimatedSprite2D.play("idle")

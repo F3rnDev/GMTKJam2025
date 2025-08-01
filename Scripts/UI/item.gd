@@ -20,7 +20,7 @@ func _ready() -> void:
 	type == EquipamentType.SlotType.LOWER):
 		pass
 
-func _add_item_inventory(body) -> void:
+func _add_item_inventory(_body) -> void:
 	if inventory.inventorySpace > 0:
 		var data = {
 			"imageItem": imageItem,
